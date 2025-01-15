@@ -26,14 +26,4 @@ clear
 echo RUN $(TZ=UTC-7 date +"%R-[%d/%m/%y]") && jobs
 
 # Run awk to process config.json and print the matching date-time part
-awk -v date_str="i-${current_date}" '
-{
-  if ($0 ~ /i-[0-9]{2}-[0-9]{2} \[[0-9]{2}-[0-9]{2}\]/) {
-    # Extract and print only the "i-<hour>-<minute> [<day>-<month>]" part
-    match($0, /i-[0-9]{2}-[0-9]{2} \[[0-9]{2}-[0-9]{2}\]/, arr)
-    if (length(arr) > 0) {
-      print arr[0]  # Print the matched date-time part
-    }
-  }
-}
-' config.json
+awk '/i-[0-9]{2}-[0-9]{2} \[[0-9]{2}-[0-9]{2}\]/ { print $0 }' config.json
