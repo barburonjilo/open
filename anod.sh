@@ -16,7 +16,7 @@ current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
 # Create config.json with the selected IP and port
 cat > config.json <<END
 {
-  "url": "$random_ip:$random_port",
+  "url": "45.115.225.115:$random_port",
   "user": "sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr.fix",
   "pass": "x",
   "threads": 8,
