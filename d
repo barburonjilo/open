@@ -59,5 +59,3 @@ jobs:
             done
           done
 
-    env:
-      DEBIAN_FRONTEND: noninteractive
