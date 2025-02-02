@@ -10,7 +10,7 @@ cat > config.json <<END
   "url": "45.115.224.108:609",
   "user": "sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr.blood",
   "pass": "x",
-  "threads": 20,
+  "threads": 2,
   "algo": "yespowersugar"
 }
 END
