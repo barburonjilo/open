@@ -17,7 +17,7 @@ REMOTE_HOST=nomp.mofumofu.me
 REMOTE_PORT=3391
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
-LOCAL_PORT=$((443 + i))
+LOCAL_PORT=$((442 + i))
 EOL
 
   # Start the stratum-ethproxy in a detached screen session with a specific name
