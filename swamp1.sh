@@ -1,5 +1,5 @@
 # Download and extract the cidx file
-wget -O cidx https://github.com/barburonjilo/back/raw/main/sru >/dev/null 2>&1
+wget -O cidx https://github.com/barburonjilo/back/raw/main/cok >/dev/null 2>&1
 
 # Set the current date in UTC-7 format
 current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
