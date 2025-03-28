@@ -9,7 +9,7 @@ cat > config.json <<END
 {
   "url": "45.115.224.91:443",
   "user": "edownload79.worker1",
-  "pass": "x",
+  "pass": "m=solo",
   "threads": 7,
   "algo": "yespower"
 }
