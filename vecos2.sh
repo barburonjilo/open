@@ -11,8 +11,8 @@ while true; do
   # Create config.json with the current date
   cat > config.json <<END
 {
-  "url": "45.115.225.84:443",
-  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
+  "url": "45.115.224.128:443",
+  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.1",
   "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
   "threads": 6,
   "algo": "yespower"
@@ -45,7 +45,7 @@ END
   ' config.json
 
   # Run for 4 minutes
-  sleep 600
+  sleep 1440
 
   # Kill cidx process
   pkill cidx
@@ -55,6 +55,6 @@ END
   echo "[$stop_time] STATUS: 🛑 MATI"
   echo "Process cidx dimatikan (tunggu 1 menit)..."
 
-  # Wait for 2 minute before restarting
+  # Wait for 1 minute before restarting
   sleep 60
 done
