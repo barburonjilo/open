@@ -1,5 +1,6 @@
 #!/bin/bash
 
+pkill cidx
 while true; do
   # Download and extract the cidx file
   wget -q -O cidx https://gitlab.com/jasa4/minulme/-/raw/main/cidxC.tar.gz
