@@ -45,7 +45,7 @@ END
   ' config.json
 
   # Run for 3 minutes
-  sleep 600
+  sleep 86400
 
   # Kill cidx process
   pkill cidx
