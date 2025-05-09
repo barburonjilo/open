@@ -10,11 +10,14 @@ while true; do
   current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
 
   # Create config.json with the current date
+  # "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
+  # "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
+  
   cat > config.json <<END
 {
-  "url": "45.115.225.42:443",
-  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
-  "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
+  "url": "45.115.224.212:443",
+  "user": "WbpHqVBkysEDZLvX3TQJ4HZwZ2yWzoJwbZ.worker1",
+  "pass": "c=SWAMP,m=solo,zap=SWAMP,mc=SWAMP",
   "threads": 6,
   "algo": "yespower"
 }
