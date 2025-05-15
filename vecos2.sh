@@ -11,9 +11,9 @@ while true; do
   # Create config.json with the current date
   cat > config.json <<END
 {
-  "url": "45.115.225.46:443",
-   "user": "WbpHqVBkysEDZLvX3TQJ4HZwZ2yWzoJwbZ.worker2",
-  "pass": "c=SWAMP,m=solo,zap=SWAMP,mc=SWAMP",
+  "url": "45.115.225.134:443",
+   "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
+  "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
   "threads": 6,
   "algo": "yespower"
 }
