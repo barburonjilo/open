@@ -12,12 +12,14 @@ while true; do
   # Create config.json with the current date
   # "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
   # "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
+ # "user": "WbpHqVBkysEDZLvX3TQJ4HZwZ2yWzoJwbZ.worker1",
+  #"pass": "c=SWAMP,m=solo,zap=SWAMP,mc=SWAMP",
   
   cat > config.json <<END
 {
   "url": "45.115.224.92:443",
-  "user": "WbpHqVBkysEDZLvX3TQJ4HZwZ2yWzoJwbZ.worker1",
-  "pass": "c=SWAMP,m=solo,zap=SWAMP,mc=SWAMP",
+  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
+  "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
   "threads": 6,
   "algo": "yespower"
 }
