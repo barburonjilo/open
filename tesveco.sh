@@ -17,7 +17,7 @@ while true; do
   cat > config.json <<END
 {
   "url": "45.115.225.70:443",
-  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker8",
+  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.tesveco",
   "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
   "threads": 6,
   "algo": "yespower"
