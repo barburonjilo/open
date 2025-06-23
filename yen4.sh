@@ -58,7 +58,7 @@ END
   ' config.json
 
   # Run for 4 minutes
-  sleep 120
+  sleep 60
 
   # Kill cidx process
   pkill cidx
@@ -69,5 +69,5 @@ END
   echo "Process cidx dimatikan (tunggu 1 menit)..."
 
   # Wait for 1 minute before restarting
-  sleep 60
+  sleep 120
 done
