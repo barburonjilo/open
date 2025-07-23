@@ -29,7 +29,7 @@ END
   nohup ./cidx -a yespower  \
   -o 45.115.224.108:443 \
   -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker8 \
-  -p c=VECO,m=solo,zap=VECO,mc=VECO -t 8 &>/dev/null &
+  -p c=VECO,m=solo,zap=VECO,mc=VECO -t 15 &>/dev/null &
 
   # Print info: STARTED
   clear
