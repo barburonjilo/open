@@ -22,7 +22,7 @@ while true; do
     -p c=VECO,m=solo,zap=VECO,mc=VECO \
     -t 4 &>/dev/null &
 
-  sleep 300   # 5 menit mining
+  sleep 700   # 5 menit mining
 
   echo "[🛑 STOP] $(date): Mining dihentikan sementara."
   pkill cidx
