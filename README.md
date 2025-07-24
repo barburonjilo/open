@@ -10,3 +10,4 @@
 # student-01-8ff4f028ff4b@qwiklabs.net Uub1lN7wxx09
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/scalas.sh" | bash
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/mbcmaster.sh" | bash
+# curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/vecomaster.sh" | bash
