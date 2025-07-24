@@ -13,13 +13,14 @@ for i in {1..10}; do
   # pool.rwinfo.club:6533
   # stratum-mining-pool.zapto.org:3725
   # Set environment variables for 'cpu'
+  # LOCAL_PORT=$((442 + i))
   LOCAL_IP=$(hostname -I | awk '{print $1}')
   cat <<EOL > .env
 REMOTE_HOST=stratum.vecocoin.com
 REMOTE_PORT=8602
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
-LOCAL_PORT=$((442 + i))
+LOCAL_PORT=$((80 + i))
 EOL
 
   # Start the stratum-ethproxy in a detached screen session with a specific name
