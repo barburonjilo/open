@@ -4,7 +4,7 @@
 echo "[INFO] Memperbarui dan menginstal dependensi..."
 
 sudo dnf update -y
-sudo dnf install -y docker screen git curl tar
+sudo dnf install -y docker git curl tar
 
 # Install Node.js dan npm (gunakan n jika perlu versi terbaru)
 if ! command -v npm &> /dev/null; then
@@ -42,13 +42,14 @@ LOCAL_PORT=$((442 + i))
 EOL
 
   # Jalankan proxy dalam screen session
-  sudo screen -dmS vec_$i npm start
+  LOG_FILE="../vec_instance_$i.log"
+  nohup npm start > "$LOG_FILE" 2>&1 &
 
-  # Cek hasilnya
+  # Cek status
   if [ $? -eq 0 ]; then
-    echo "[SUCCESS] Screen session vec_$i berhasil dijalankan."
+    echo "[SUCCESS] Instance ke-$i berjalan di background. Log: $LOG_FILE"
   else
-    echo "[FAIL] Gagal menjalankan screen session vec_$i."
+    echo "[FAIL] Gagal menjalankan instance ke-$i"
   fi
 
   cd ..
