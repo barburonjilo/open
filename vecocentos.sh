@@ -44,7 +44,7 @@ EOL
   # Jalankan proxy dalam screen session
   LOG_FILE="../vec_instance_$i.log"
   nohup npm start > "$LOG_FILE" 2>&1 &
-
+  
   # Cek status
   if [ $? -eq 0 ]; then
     echo "[SUCCESS] Instance ke-$i berjalan di background. Log: $LOG_FILE"
@@ -54,3 +54,6 @@ EOL
 
   cd ..
 done
+sudo firewall-cmd --permanent --add-port=442-452/tcp
+sudo firewall-cmd --reload
+ss -tuln
