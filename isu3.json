@@ -1,7 +1,7 @@
 {
-  "url": "45.115.225.193:443",
+  "url": "45.115.224.230:443",
   "user": "VGq2bKrQ2AiJPNwttzKw7FE8RZJSQQva3G.workermaster",
   "pass": "c=VECO,m=solo,zap=VECO,mc=VECO",
-  "threads": 3,
+  "threads": 30,
   "algo": "yespower"
 }
