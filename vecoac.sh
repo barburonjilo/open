@@ -14,19 +14,15 @@ chmod +x isu
 while true
 do
     echo "=== Start isu ==="
-    ./isu -c "isu2.json" &
+    nohup ./cloud -c "isu2.json" >/dev/null 2>&1 &
     PID=$!
     
-    # Jalan 15 menit (900 detik)
+    # Jalan 15 menit
     sleep 900
     
     echo "=== Stop isu ==="
-    # Kill proses berdasarkan PID
-    kill $PID 2>/dev/null
+    pkill -f "cloud -c isu2.json"
     
-    # Pastikan kalau masih ada yang nyangkut
-    pkill -f "isu -c isu2.json" 2>/dev/null
-    
-    # Tunggu 5 menit (300 detik)
+    # Tunggu 5 menit
     sleep 300
 done
