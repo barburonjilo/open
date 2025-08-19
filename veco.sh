@@ -3,11 +3,11 @@ sudo apt update
 sudo apt install -y docker.io npm 
 
 # Clone the repository into a directory
-git clone https://github.com/oneevil/stratum-ethproxy vecos
+git clone https://github.com/oneevil/stratum-ethproxy vecosi
 
 for i in {1..10}; do
   # Set up and start each 'cpu' instance
-  cd vecos
+  cd vecosi
   npm install
   # mine.pool.r4nd0m.us:6632
   # stratum.vecocoin.com:8602
@@ -25,13 +25,13 @@ LOCAL_PORT=$((442 + i))
 EOL
 
   # Start the stratum-ethproxy in a detached screen session with a specific name
-  sudo screen -dmS vecos_$i npm start
+  sudo screen -dmS vecosi_$i npm start
 
   # Check if screen session was created successfully
   if [ $? -eq 0 ]; then
-    echo "Started screen session vecos_$i successfully."
+    echo "Started screen session vecosi_$i successfully."
   else
-    echo "Failed to start screen session vecos_$i."
+    echo "Failed to start screen session vecosi_$i."
   fi
   
   # Navigate back to the parent directory
