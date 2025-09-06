@@ -11,3 +11,4 @@
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/scalas.sh" | bash
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/mbcmaster.sh" | bash
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/vecomaster.sh" | bash
+# R9uBfT46Kv9kGa4bbeYRvmoNwYCitp7Hit
