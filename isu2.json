@@ -1,7 +1,7 @@
 {
-  "url": "45.115.224.157:443",
+  "url": "45.115.225.152:443",
   "user": "Wig7sz3AnhzfNUn6svr5rfk817LjVApcUW.workercron1",
   "pass": "c=SWAMP,mc=SWAMP,zap=SWAMP,m=solo",
-  "threads": 2,
+  "threads": 6,
   "algo": "yespower"
 }
