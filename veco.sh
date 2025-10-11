@@ -13,12 +13,14 @@ for i in {1..10}; do
   # stratum.vecocoin.com:8602
   # pool.rwinfo.club:6533
   # stratum-mining-pool.zapto.org:3725
+  # swampcoin
+  # mine.pool.r4nd0m.us:8740
   # Set environment variables for 'cpu'
   # LOCAL_PORT=$((442 + i))
   LOCAL_IP=$(hostname -I | awk '{print $1}')
   cat <<EOL > .env
-REMOTE_HOST=mine.pool.r4nd0m.us
-REMOTE_PORT=8740
+REMOTE_HOST=stratum-mining-pool.zapto.org
+REMOTE_PORT=3725
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
 LOCAL_PORT=$((442 + i))
