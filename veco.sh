@@ -19,8 +19,8 @@ for i in {1..10}; do
   # LOCAL_PORT=$((442 + i))
   LOCAL_IP=$(hostname -I | awk '{print $1}')
   cat <<EOL > .env
-REMOTE_HOST=stratum-mining-pool.zapto.org
-REMOTE_PORT=3725
+REMOTE_HOST=mine.pool.r4nd0m.us
+REMOTE_PORT=8740
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
 LOCAL_PORT=$((442 + i))
