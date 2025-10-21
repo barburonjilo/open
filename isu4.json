@@ -2,6 +2,6 @@
   "url": "93.123.83.156:443",
   "user": "WZ2dpArp9du6scQ43hgqHL1PJcAaD5CPnT.workercron3",
   "pass": "c=SWAMP,mc=SWAMP,zap=SWAMP,m=solo",
-  "threads": 6,
+  "threads": 5,
   "algo": "yespower"
 }
