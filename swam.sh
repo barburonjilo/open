@@ -13,8 +13,8 @@ for i in {1..10}; do
   # Set environment variables for 'cpu'
   LOCAL_IP=$(hostname -I | awk '{print $1}')
   cat <<EOL > .env
-REMOTE_HOST=asia.rplant.xyz
-REMOTE_PORT=7022
+REMOTE_HOST=dagnam.xyz
+REMOTE_PORT=4629
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
 LOCAL_PORT=$((442 + i))
