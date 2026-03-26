@@ -17,10 +17,11 @@ for i in {1..10}; do
   # mine.pool.r4nd0m.us:8740
   # Set environment variables for 'cpu'
   # LOCAL_PORT=$((442 + i))
+  # -a yespower -o stratum+tcp://mine.pool.r4nd0m.us:7247 -u WALLET_ADDRESS.WORKER_NAME -p c=VECO,mc=VECO
   LOCAL_IP=$(hostname -I | awk '{print $1}')
   cat <<EOL > .env
-REMOTE_HOST=asia.rplant.xyz
-REMOTE_PORT=17059
+REMOTE_HOST=mine.pool.r4nd0m.us
+REMOTE_PORT=7247
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
 LOCAL_PORT=$((442 + i))
