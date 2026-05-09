@@ -9,12 +9,12 @@ for i in {1..10}; do
   # Set up and start each 'cpu' instance
   cd swam
   npm install
-  
+  # asia.rplant.xyz:17059
   # Set environment variables for 'cpu'
   LOCAL_IP=$(hostname -I | awk '{print $1}')
   cat <<EOL > .env
-REMOTE_HOST=dagnam.xyz
-REMOTE_PORT=4629
+REMOTE_HOST=asia.rplant.xyz
+REMOTE_PORT=17059
 REMOTE_PASSWORD=x
 LOCAL_HOST=$LOCAL_IP
 LOCAL_PORT=$((442 + i))
