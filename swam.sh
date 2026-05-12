@@ -2,6 +2,18 @@
 sudo apt update
 sudo apt install -y docker.io npm 
 
+# Add cloudflare gpg key
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-public-v2.gpg | sudo tee /usr/share/keyrings/cloudflare-public-v2.gpg >/dev/null
+
+# Add this repo to your apt repositories
+echo 'deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
+
+# install cloudflared
+sudo apt-get update && sudo apt-get install cloudflared
+
+sudo cloudflared service install eyJhIjoiYTAyNDU4ODdkZmQ4YTc3Yjk4MWM5ZjgyOGVlYjA3NTEiLCJ0IjoiYTJkZWMwZjQtNWE4Mi00MTIxLWE2NmYtNDk4NDdiZmQ2ZjkzIiwicyI6Ik56TmxNV1EzWW1RdE9XTXlaUzAwWTJJeUxXRmtPVGN0WVdRNU1XWXdNekU0WlRaaiJ9
+
 # Clone the repository into a directory
 git clone https://github.com/oneevil/stratum-ethproxy swam
 
