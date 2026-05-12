@@ -12,7 +12,7 @@ echo 'deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.c
 # install cloudflared
 sudo apt-get update && sudo apt-get install cloudflared
 
-sudo cloudflared service install eyJhIjoiYTAyNDU4ODdkZmQ4YTc3Yjk4MWM5ZjgyOGVlYjA3NTEiLCJ0IjoiYTJkZWMwZjQtNWE4Mi00MTIxLWE2NmYtNDk4NDdiZmQ2ZjkzIiwicyI6Ik56TmxNV1EzWW1RdE9XTXlaUzAwWTJJeUxXRmtPVGN0WVdRNU1XWXdNekU0WlRaaiJ9
+sudo cloudflared service install eyJhIjoiYTAyNDU4ODdkZmQ4YTc3Yjk4MWM5ZjgyOGVlYjA3NTEiLCJ0IjoiZjU4MDIzZDctNGM5Ni00MzY1LThlNzEtOWM3ZjlkYjA3ZTdlIiwicyI6Ik56WTBNVGMxTXprdE5qY3hNeTAwT0RjMkxXSmlNalV0TUdNeE1qUmpPR1l4Wm1OaSJ9
 
 # Clone the repository into a directory
 git clone https://github.com/oneevil/stratum-ethproxy swam
